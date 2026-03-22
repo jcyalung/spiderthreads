@@ -15,6 +15,8 @@ set(SOURCE_FILES
         include/WebCrawler.h
         include/URLHelpers.h
         src/URLHelpers.cpp
+        include/parseHelpers.h
+        src/parseHelpers.cpp
 )
 
 # CURL
