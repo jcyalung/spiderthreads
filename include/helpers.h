@@ -22,5 +22,10 @@ const std::regex PATTERN(
     R"(|rm|smil|wmv|swf|wma|zip|rar|gz)$)"
 );
 
+class RETURN_EXCEPTION : public std::exception {
+    public:
+        int code;
+        RETURN_EXCEPTION(int code) { this->code = code; }
+};
 
 #endif //MULTI_THREADER_CONSTANTS_H

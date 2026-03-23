@@ -1,5 +1,9 @@
 #include "include/helpers.h"
 #include "include/parseHelpers.h"
+#include <csignal>
+volatile std::sig_atomic_t sigint_flag;
+
+void sigint_handler(int) { sigint_flag = 1; }
 
 int main(int argc, char* argv[]) {
 
@@ -8,7 +12,7 @@ int main(int argc, char* argv[]) {
     try {
         vm = parse_args(argc, argv);
     }
-    catch (std::exception& e) { return 1; }
+    catch (RETURN_EXCEPTION& e) { return e.code; }
 
     auto start = boost::urls::parse_uri(vm["start"].as<std::string>());
     if(start) {

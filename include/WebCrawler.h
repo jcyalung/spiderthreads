@@ -4,7 +4,6 @@
 #include <string>
 #include <iostream>
 #include <type_traits>
-#include <cassert>
 
 #include <stdexcept>
 #ifndef MULTI_THREADER_WEBCRAWLER_H
@@ -12,25 +11,22 @@
 
 
 class WebCrawler {
-private:
     std::string startingURL;
     unsigned int numURLs = 100;
+    std::ostream history_log;
+    std::ostream log;
+    unsigned int delay;
+    unsigned int threads;
 public:
-    WebCrawler() {
-        throw std::runtime_error("Must define starting URL");
-    }
-    WebCrawler(std::string startingURL) {
-        static_assert(std::is_same_v<decltype(startingURL), std::string>, "startingURL must be of type string");
-        this->startingURL = startingURL;
-    }
-    WebCrawler(std::string startingURL, unsigned int numURLs) {
-        static_assert(std::is_same_v<decltype(startingURL), std::string>, "startingURL must be of type string");
-        static_assert(std::is_same_v<decltype(numURLs), unsigned int>, "numURLs must be of type unsigned int");
-        this->startingURL = startingURL;
-        this->numURLs = numURLs;
-    }
+    WebCrawler(
+        std::string&  startingURL,
+        unsigned int& numURLs,
+        std::ostream& history_log,
+        std::ostream& log,
+        unsigned int& delay,
+        unsigned int& threads);
 
-
+    virtual ~WebCrawler();
 };
 
 
