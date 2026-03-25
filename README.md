@@ -1,6 +1,14 @@
 # spiderthreads
 multithreaded web crawler written in C++.
 
+i'm not good at documentation
+## Requirements/Dependencies
+- C++ 20
+- CMake 4.1
+- Boost 1.90
+- Lexbor 2.7
+
+and a Macbook Pro with macOS Sequoia 15.7.4 and CLion 2025.3.3
 ## Usage
 ```shell
   SpiderThread -s <STARTING_URL> -n <NUMBER_OF_WEBSITES> [OPTIONS]
@@ -18,7 +26,6 @@ multithreaded web crawler written in C++.
   -d [ --delay ] arg (=300)      DELAY delay in ms for politeness
   -l [ --log ] arg               LOG_FILE to save PROGRESS
 ```
-i'm not good at documentation
 
 ## copyright
 dont copy pls
