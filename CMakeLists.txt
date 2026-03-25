@@ -27,12 +27,16 @@ find_package(CURL REQUIRED)
 # Using the imported targets (Boost::headers / Boost::url) is the modern way.
 find_package(Boost REQUIRED COMPONENTS url program_options)
 
+# lexbor for html parsing
+find_package(lexbor CONFIG REQUIRED)
+
 
 # edit this if needed
 set(COMMON_LIBS
     CURL::libcurl
     Boost::url
     Boost::program_options
+    lexbor
 )
 
 function(apply_settings TARGET_NAME)

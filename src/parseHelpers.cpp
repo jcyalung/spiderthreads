@@ -49,19 +49,19 @@ po::variables_map parse_args(int argc, char *argv[]) {
 
     po::variables_map vm;
     try {
-        // store options 
+        // store options
         po::store(po::parse_command_line(argc, argv, spider_thread_options), vm);
-        po::notify(vm);
+        if(vm.contains("help")) { std::cout << spider_thread_options << std::endl; }
+        else {
+            po::notify(vm);
+        }
     }
     catch (std::exception& e) {
         cerr << e.what() << endl;
         cerr << spider_thread_options << endl;
         throw RETURN_EXCEPTION(1);
     }
-    if(vm.contains("help")) {
-        std::cout << spider_thread_options << std::endl;
-        throw RETURN_EXCEPTION(0);
-    }
+    if(vm.contains("help")) { throw RETURN_EXCEPTION(0); }
     if(!valid_options(vm)) {
         cerr << spider_thread_options << std::endl;
         throw RETURN_EXCEPTION(1);
